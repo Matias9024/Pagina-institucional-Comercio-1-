@@ -330,30 +330,30 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         asistencia: {
-            icon: 'fas fa-hands-helping',
-            title: 'Bachillerato Técnico en Asistencia',
-            description: 'Prepara técnicos en atención al cliente y gestión administrativa.',
+            icon: 'fas fa-running',
+            title: 'Bachillerato Técnico en Asistencia Deportiva',
+            description: 'Forma técnicos especializados en entrenamiento deportivo y gestión de eventos deportivos.',
             duracion: '3 años',
             perfil: {
-                ingreso: ['Servicio al cliente', 'Comunicación', 'Orden', 'Proactividad'],
-                egreso: ['Atención al cliente', 'Secretariado', 'Gestión administrativa', 'Comunicación']
+                ingreso: ['Pasión por el deporte', 'Condición física', 'Liderazgo', 'Trabajo en equipo'],
+                egreso: ['Entrenamiento deportivo', 'Preparación física', 'Nutrición deportiva', 'Gestión de eventos']
             },
             materias: [
-                'Atención al Cliente',
-                'Secretariado Ejecutivo',
-                'Gestión Administrativa',
-                'Comunicación Empresarial',
-                'Ofimática',
-                'Protocolo y Etiqueta',
-                'Gestión de la Información',
-                'Relaciones Humanas'
+                'Entrenamiento Deportivo I, II',
+                'Preparación Física',
+                'Nutrición Deportiva',
+                'Fisiología del Ejercicio',
+                'Gestión de Eventos Deportivos',
+                'Primeros Auxilios Deportivos',
+                'Psicología Deportiva',
+                'Administración Deportiva'
             ],
             laborales: [
-                'Asistente Administrativo',
-                'Secretario/a',
-                'Atención al Cliente',
-                'Recepcionista',
-                'Auxiliar de Gestión'
+                'Entrenador Personal',
+                'Preparador Físico',
+                'Nutricionista Deportivo',
+                'Organizador de Eventos',
+                'Asistente Deportivo'
             ]
         }
     };

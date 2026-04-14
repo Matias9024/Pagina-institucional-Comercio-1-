@@ -41,7 +41,7 @@ body {
 
 .academic-carousel .academic-card {
     min-width: 100%;
-    padding: 6rem 3rem;
+    padding: 8rem 4rem;
     text-align: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -51,6 +51,7 @@ body {
     transition: all 0.5s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 /* Fondos específicos para cada especialidad con imágenes de alta calidad */
@@ -72,7 +73,7 @@ body {
 
 .academic-carousel .academic-card[data-bachillerato="administracion"] {
     background: linear-gradient(rgba(20, 108, 148, 0.7), rgba(40, 167, 69, 0.8)),
-                url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=90');
+                url('https://americana.edu.co/medellin/wp-content/uploads/2023/02/razones-para-estudiar-administracion-de-empresas-destacada.jpg');
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
@@ -132,41 +133,61 @@ body {
 }
 
 .academic-carousel .academic-card .card-icon {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
+    font-size: 5.5rem;
+    margin-bottom: 2rem;
     color: #fff;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
 }
 
 .academic-carousel .academic-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
     color: #fff;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .academic-carousel .academic-card p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
     line-height: 1.6;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .ver-mas-btn {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.25);
     color: white;
-    border: 2px solid white;
-    padding: 0.8rem 2rem;
+    border: 3px solid white;
+    padding: 1rem 2.5rem;
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .ver-mas-btn:hover {
     background: white;
     color: #667eea;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .carousel-btn {
@@ -475,7 +496,11 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+                url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyacp0fU_ceOItAZjDURmuhgVu766sdDuOVYnOrb3whrMQnrgZxx3k3rFQpZeXlU9NhXMbv8G-wOZami7vw6wvrMTpSeqLgx0C1QkYZkZpPpHPMy4J1uP3ioj8RgmdMDpnkjBt=s680-w680-h510-rw');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: white;
     padding: 120px 0 80px;
     display: flex;
@@ -526,9 +551,14 @@ body {
 }
 
 .hero-icon {
-    font-size: 15rem;
-    opacity: 0.8;
+    width: 15rem;
+    height: 15rem;
+    opacity: 0.9;
     animation: float 3s ease-in-out infinite;
+    filter: 
+        drop-shadow(0 10px 20px rgba(0,0,0,0.3))
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="remove-white"><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 1 0"/></filter></svg>#remove-white');
+    mix-blend-mode: multiply;
 }
 
 @keyframes float {
