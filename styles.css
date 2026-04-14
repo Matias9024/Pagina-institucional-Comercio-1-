@@ -21,8 +21,9 @@ body {
 /* Carrusel de Bachilleratos */
 .carousel-container {
     position: relative;
-    max-width: 600px;
-    margin: 0 auto;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -40,7 +41,7 @@ body {
 
 .academic-carousel .academic-card {
     min-width: 100%;
-    padding: 3rem 2rem;
+    padding: 6rem 3rem;
     text-align: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -48,6 +49,81 @@ body {
     opacity: 0.3;
     transform: scale(0.9);
     transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fondos específicos para cada especialidad con imágenes de alta calidad */
+.academic-carousel .academic-card[data-bachillerato="informatica"] {
+    background: linear-gradient(rgba(0, 50, 150, 0.7), rgba(0, 123, 255, 0.8)),
+                url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.academic-carousel .academic-card[data-bachillerato="electrotecnia"] {
+    background: linear-gradient(rgba(255, 87, 34, 0.7), rgba(255, 193, 7, 0.8)),
+                url('https://www.avanzaentucarrera.com/orientacion/comp/uploads/2019/04/AVTC-electrotecnia.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.academic-carousel .academic-card[data-bachillerato="administracion"] {
+    background: linear-gradient(rgba(20, 108, 148, 0.7), rgba(40, 167, 69, 0.8)),
+                url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=90');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.academic-carousel .academic-card[data-bachillerato="salud"] {
+    background: linear-gradient(rgba(220, 53, 69, 0.7), rgba(233, 30, 99, 0.8)),
+                url('https://images.unsplash.com/photo-1538108149393-fbbd81895907?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.academic-carousel .academic-card[data-bachillerato="marketing"] {
+    background: linear-gradient(rgba(156, 39, 176, 0.7), rgba(255, 87, 34, 0.8)),
+                url('https://teleduc.uc.cl/wp-content/uploads/2025/02/marketing-digital-actualidad.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.academic-carousel .academic-card[data-bachillerato="contabilidad"] {
+    background: linear-gradient(rgba(23, 105, 170, 0.7), rgba(23, 162, 184, 0.8)),
+                url('https://i0.wp.com/velneo.com/wp-content/uploads/2025/02/6322beef299e7f3bc41c88a5_contabilidad-basica-destacada.jpg?w=1280&ssl=1');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.academic-carousel .academic-card[data-bachillerato="diseno"] {
+    background: linear-gradient(rgba(244, 67, 54, 0.7), rgba(255, 193, 7, 0.8)),
+                url('https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.academic-carousel .academic-card[data-bachillerato="cooperativismo"] {
+    background: linear-gradient(rgba(76, 175, 80, 0.7), rgba(139, 195, 74, 0.8)),
+                url('https://coopacsanmiguel.pe/wp-content/uploads/2025/01/QUE-ES-EL-COOPERATIVISMO-1024x576.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.academic-carousel .academic-card[data-bachillerato="asistencia"] {
+    background: linear-gradient(rgba(103, 58, 183, 0.7), rgba(156, 39, 176, 0.8)),
+                url('https://somosinstitutokennedy.com.ar/wp-content/uploads/2025/01/R-4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
 }
 
 .academic-carousel .academic-card.active {
@@ -305,7 +381,7 @@ body {
     }
     
     .academic-carousel .academic-card {
-        padding: 2rem 1.5rem;
+        padding: 4rem 2rem;
     }
     
     .academic-carousel .academic-card h3 {
@@ -648,39 +724,48 @@ body {
 }
 
 /* Contact Section */
-.contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-}
-
-.contact-info {
+.contact-content-centered {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .contact-item {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 .contact-item i {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #3498db;
-    min-width: 30px;
-    margin-top: 0.2rem;
+    min-width: 40px;
 }
 
 .contact-item h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: #2c3e50;
 }
 
 .contact-item p {
     color: #666;
+    font-size: 1.05rem;
 }
 
 .contact-form {
@@ -957,4 +1042,323 @@ html {
     margin-bottom: 1rem;
     text-align: center;
     display: none;
+}
+
+/* Estilos para la sección de noticias */
+.noticias-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.noticias-filtros {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filtro-btn {
+    background: #f8f9fa;
+    color: #666;
+    border: 2px solid #e0e0e0;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+.filtro-btn:hover {
+    background: #e8f4f8;
+    border-color: #3498db;
+    color: #3498db;
+    transform: translateY(-2px);
+}
+
+.filtro-btn.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.noticia-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.noticia-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.noticia-card.destacado {
+    border: 2px solid #e74c3c;
+}
+
+.noticia-card.destacado::before {
+    content: "DESTACADO";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #e74c3c;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.noticia-imagen {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.noticia-card:hover .noticia-imagen {
+    transform: scale(1.05);
+}
+
+.noticia-contenido {
+    padding: 1.5rem;
+}
+
+.noticia-categoria {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.noticia-categoria.academico {
+    background: #9b59b6;
+}
+
+.noticia-categoria.eventos {
+    background: #e67e22;
+}
+
+.noticia-categoria.avisos {
+    background: #f39c12;
+}
+
+.noticia-categoria.logros {
+    background: #27ae60;
+}
+
+.noticia-titulo {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.noticia-extracto {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.noticia-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #888;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.noticia-fecha {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.noticia-fecha i {
+    color: #3498db;
+}
+
+.noticia-autor {
+    font-style: italic;
+}
+
+.noticias-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.pagination-btn {
+    background: white;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.pagination-btn:hover {
+    background: #f8f9fa;
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.pagination-btn.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Modal para detalles de noticia */
+.noticia-modal {
+    max-width: 800px;
+    width: 90%;
+}
+
+.noticia-modal-header {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.noticia-modal-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.noticia-modal-categoria {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.noticia-modal-titulo {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.noticia-modal-body {
+    padding: 2rem;
+}
+
+.noticia-modal-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.noticia-modal-contenido {
+    line-height: 1.8;
+    color: #444;
+    font-size: 1.05rem;
+}
+
+/* Responsive para noticias */
+@media (max-width: 768px) {
+    .noticias-filtros {
+        gap: 0.5rem;
+    }
+    
+    .filtro-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .noticias-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .noticia-titulo {
+        font-size: 1.1rem;
+    }
+    
+    .noticia-modal-titulo {
+        font-size: 1.5rem;
+    }
+    
+    .noticia-modal-header {
+        height: 200px;
+    }
+    
+    .noticia-modal-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .noticias-filtros {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+    
+    .filtro-btn {
+        white-space: nowrap;
+    }
+    
+    .noticia-card.destacado::before {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .noticia-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
 }

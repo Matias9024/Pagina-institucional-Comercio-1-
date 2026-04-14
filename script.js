@@ -764,5 +764,230 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     });
     
+    // Sistema de Noticias
+    class NoticiasManager {
+        constructor() {
+            this.noticiasGrid = document.getElementById('noticiasGrid');
+            this.noticiasPagination = document.getElementById('noticiasPagination');
+            this.filtroBtns = document.querySelectorAll('.filtro-btn');
+            this.modalOverlay = document.getElementById('modalOverlay');
+            this.modalBody = document.getElementById('modalBody');
+            this.modalClose = document.getElementById('modalClose');
+            
+            this.categoriaActual = 'todos';
+            this.paginaActual = 1;
+            this.noticiasPorPagina = 6;
+            
+            this.init();
+        }
+        
+        init() {
+            this.cargarNoticias();
+            this.setupEventListeners();
+        }
+        
+        setupEventListeners() {
+            // Event listeners para filtros
+            this.filtroBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    this.filtroBtns.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    this.categoriaActual = e.target.dataset.categoria;
+                    this.paginaActual = 1;
+                    this.cargarNoticias();
+                });
+            });
+            
+            // Event listener para cerrar modal
+            if (this.modalClose) {
+                this.modalClose.addEventListener('click', () => this.cerrarModal());
+            }
+            
+            if (this.modalOverlay) {
+                this.modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === this.modalOverlay) {
+                        this.cerrarModal();
+                    }
+                });
+            }
+            
+            // Cerrar modal con ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && this.modalOverlay.classList.contains('active')) {
+                    this.cerrarModal();
+                }
+            });
+        }
+        
+        obtenerNoticiasFiltradas() {
+            if (this.categoriaActual === 'todos') {
+                return obtenerNoticiasPorCategoria();
+            }
+            return obtenerNoticiasPorCategoria(this.categoriaActual);
+        }
+        
+        cargarNoticias() {
+            const noticias = this.obtenerNoticiasFiltradas();
+            const totalNoticias = noticias.length;
+            const totalPages = Math.ceil(totalNoticias / this.noticiasPorPagina);
+            
+            // Ajustar página actual si es necesario
+            if (this.paginaActual > totalPages) {
+                this.paginaActual = totalPages || 1;
+            }
+            
+            const startIndex = (this.paginaActual - 1) * this.noticiasPorPagina;
+            const endIndex = startIndex + this.noticiasPorPagina;
+            const noticiasPagina = noticias.slice(startIndex, endIndex);
+            
+            this.renderizarNoticias(noticiasPagina);
+            this.renderizarPaginacion(totalPages);
+        }
+        
+        renderizarNoticias(noticias) {
+            if (!this.noticiasGrid) return;
+            
+            if (noticias.length === 0) {
+                this.noticiasGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                        <i class="fas fa-newspaper" style="font-size: 4rem; color: #ddd; margin-bottom: 1rem;"></i>
+                        <h3 style="color: #666; margin-bottom: 0.5rem;">No hay noticias disponibles</h3>
+                        <p style="color: #999;">No se encontraron noticias en esta categoría.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            this.noticiasGrid.innerHTML = noticias.map(noticia => `
+                <article class="noticia-card ${noticia.destacado ? 'destacado' : ''}" data-id="${noticia.id}">
+                    <div style="overflow: hidden; height: 200px;">
+                        <img src="${noticia.imagen}" alt="${noticia.titulo}" class="noticia-imagen" onerror="this.src='https://picsum.photos/seed/default/400/250.jpg'">
+                    </div>
+                    <div class="noticia-contenido">
+                        <span class="noticia-categoria ${noticia.categoria}">${noticia.categoria}</span>
+                        <h3 class="noticia-titulo">${noticia.titulo}</h3>
+                        <p class="noticia-extracto">${noticia.contenido}</p>
+                        <div class="noticia-meta">
+                            <div class="noticia-fecha">
+                                <i class="far fa-calendar"></i>
+                                <span>${formatearFecha(noticia.fecha)}</span>
+                            </div>
+                            <div class="noticia-autor">${noticia.autor}</div>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+            
+            // Agregar event listeners a las tarjetas de noticias
+            const noticiaCards = this.noticiasGrid.querySelectorAll('.noticia-card');
+            noticiaCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const noticiaId = parseInt(card.dataset.id);
+                    this.mostrarDetalleNoticia(noticiaId);
+                });
+            });
+        }
+        
+        renderizarPaginacion(totalPages) {
+            if (!this.noticiasPagination) return;
+            
+            if (totalPages <= 1) {
+                this.noticiasPagination.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // Botón anterior
+            paginationHTML += `
+                <button class="pagination-btn" ${this.paginaActual === 1 ? 'disabled' : ''} data-page="${this.paginaActual - 1}">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `;
+            
+            // Números de página
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= this.paginaActual - 1 && i <= this.paginaActual + 1)) {
+                    paginationHTML += `
+                        <button class="pagination-btn ${i === this.paginaActual ? 'active' : ''}" data-page="${i}">
+                            ${i}
+                        </button>
+                    `;
+                } else if (i === this.paginaActual - 2 || i === this.paginaActual + 2) {
+                    paginationHTML += `<span style="padding: 0.5rem;">...</span>`;
+                }
+            }
+            
+            // Botón siguiente
+            paginationHTML += `
+                <button class="pagination-btn" ${this.paginaActual === totalPages ? 'disabled' : ''} data-page="${this.paginaActual + 1}">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+            
+            this.noticiasPagination.innerHTML = paginationHTML;
+            
+            // Agregar event listeners a los botones de paginación
+            const paginationBtns = this.noticiasPagination.querySelectorAll('.pagination-btn');
+            paginationBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const page = parseInt(btn.dataset.page);
+                    if (page && page !== this.paginaActual) {
+                        this.paginaActual = page;
+                        this.cargarNoticias();
+                        // Scroll al inicio de la sección de noticias
+                        document.getElementById('noticias').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+        
+        mostrarDetalleNoticia(noticiaId) {
+            const noticia = obtenerNoticiaPorId(noticiaId);
+            if (!noticia) return;
+            
+            const modalContent = `
+                <div class="noticia-modal">
+                    <div class="noticia-modal-header">
+                        <img src="${noticia.imagen}" alt="${noticia.titulo}" class="noticia-modal-imagen" onerror="this.src='https://picsum.photos/seed/default/800/400.jpg'">
+                        <div class="noticia-modal-categoria ${noticia.categoria}">${noticia.categoria}</div>
+                        <h2 class="noticia-modal-titulo">${noticia.titulo}</h2>
+                    </div>
+                    <div class="noticia-modal-body">
+                        <div class="noticia-modal-meta">
+                            <div class="noticia-fecha">
+                                <i class="far fa-calendar"></i>
+                                <span>${formatearFecha(noticia.fecha)}</span>
+                            </div>
+                            <div class="noticia-autor">
+                                <i class="far fa-user"></i>
+                                <span>${noticia.autor}</span>
+                            </div>
+                        </div>
+                        <div class="noticia-modal-contenido">
+                            ${noticia.contenido}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            if (this.modalBody) {
+                this.modalBody.innerHTML = modalContent;
+                this.modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        cerrarModal() {
+            if (this.modalOverlay) {
+                this.modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    }
+    
+    // Inicializar el sistema de noticias
+    const noticiasManager = new NoticiasManager();
+    
     console.log('Colegio Comercio 1 - Sitio web cargado exitosamente');
 });
