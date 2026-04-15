@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESCUELA NACIONAL DE COMERCIO 1 - Educación de Excelencia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>ESCUELA NACIONAL DE COMERCIO 1</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#inicio" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nosotros" class="nav-link">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#academico" class="nav-link">Académico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instalaciones" class="nav-link">Instalaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#noticias" class="nav-link">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contacto" class="nav-link">Contacto</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+                        <h2>Formando Líderes del Mañana</h2>
+                                    <p>Educación de excelencia con valores humanos y preparación académica integral</p>
+                                                <button class="cta-button">Conoce Más</button>
+                                                        </div>
+                                                                <div class="hero-image">
+                                                                            <img src="logojpg-removebg-preview.png" alt="Escuela Nacional de Comercio 1" class="hero-icon">
+                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </section>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    <!-- About Section -->
+    <section id="nosotros" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Más de 100 años de trayectoria educativa</h3>
+                    <p>La Escuela Nacional de Comercio Nº1 es una institución educativa comprometida con la formación integral de nuestros estudiantes, combinando excelencia académica con valores humanos que los preparan para los desafíos del mundo moderno.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <span>Excelencia Académica</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>Valores Humanos</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-rocket"></i>
+                            <span>Innovación Educativa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>700+</h3>
+                        <p>Estudiantes</p>
+                    </div>
+                    <div class="stat">
+                        <h3>30+</h3>
+                        <p>Docentes</p>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Section -->
+    <section id="academico" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Oferta Académica</h2>
+            
+            <!-- Carrusel de Bachilleratos -->
+            <div class="carousel-container">
+                <button class="carousel-btn prev-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel-wrapper">
+                    <div class="academic-carousel" id="academicCarousel">
+                        <div class="academic-card active" data-bachillerato="informatica">
+                            <div class="card-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Informática</h3>
+                            <p>Formación en programación, redes y mantenimiento de sistemas computacionales.</p>
+                            <button class="ver-mas-btn" data-bachillerato="informatica">Ver más información</button>
+                        </div>
+                        <div class="academic-card" data-bachillerato="electrotecnia">
+                            <div class="card-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Electrotecnia</h3>
+                            <p>Especialización en instalaciones eléctricas, electrónica y sistemas de control.</p>
+                            <button class="ver-mas-btn" data-bachillerato="electrotecnia">Ver más información</button>
+                        </div>
+                        <div class="academic-card" data-bachillerato="administracion">
+                            <div class="card-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Administración de Negocios</h3>
+                            <p>Gestión empresarial, marketing y administración de recursos humanos.</p>
+                            <button class="ver-mas-btn" data-bachillerato="administracion">Ver más información</button>
+                        </div>
+                        <div class="academic-card" data-bachillerato="salud">
+                            <div class="card-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Salud</h3>
+                            <p>Atención primaria, primeros auxilios y cuidado de la salud comunitaria.</p>
+                            <button class="ver-mas-btn" data-bachillerato="salud">Ver más información</button>
+                        </div>
+                        <div class="academic-card" data-bachillerato="marketing">
+                            <div class="card-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Marketing</h3>
+                            <p>Estrategias de mercado, publicidad digital y análisis de consumidores.</p>
+                            <button class="ver-mas-btn" data-bachillerato="marketing">Ver más información</button>
+                        </div>
+                        <div class="academic-card" data-bachillerato="contabilidad">
+                            <div class="card-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Contabilidad</h3>
+                            <p>Gestión financiera, contabilidad comercial y fiscalización empresarial.</p>
+                            <button class="ver-mas-btn" data-bachillerato="contabilidad">Ver más información</button>
+                        </div>
+                        <div class="academic-card" data-bachillerato="diseno">
+                            <div class="card-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Diseño Gráfico</h3>
+                            <p>Diseño digital, edición de imágenes y creación de contenido visual.</p>
+                            <button class="ver-mas-btn" data-bachillerato="diseno">Ver más información</button>
+                        </div>
+                        <div class="academic-card" data-bachillerato="cooperativismo">
+                            <div class="card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Cooperativismo</h3>
+                            <p>Gestión de cooperativas, economía social y desarrollo comunitario.</p>
+                            <button class="ver-mas-btn" data-bachillerato="cooperativismo">Ver más información</button>
+                        </div>
+                        <div class="academic-card" data-bachillerato="asistencia">
+                            <div class="card-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <h3>Bachillerato Técnico en Asistencia Deportiva</h3>
+                            <p>Entrenamiento deportivo, preparación física, nutrición deportiva y gestión de eventos deportivos.</p>
+                            <button class="ver-mas-btn" data-bachillerato="asistencia">Ver más información</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-btn next-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Indicadores del carrusel -->
+            <div class="carousel-indicators" id="carouselIndicators"></div>
+        </div>
+    </section>
+
+    <!-- Modal para información detallada -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Facilities Section -->
+    <section id="instalaciones" class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestras Instalaciones</h2>
+            <div class="facilities-grid">
+                <div class="facility-item">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Laboratorios de Informatica</h3>
+                    <p>Equipados con tecnología de última generación para el aprendizaje digital.</p>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-flask"></i>
+                    <h3>Laboratorios de salud</h3>
+                    <p>Laboratorios para prácticas de física, química y biología.</p>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Biblioteca</h3>
+                    <p>Amplio acervo bibliográfico y recursos digitales para el estudio.</p>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-running"></i>
+                    <h3>Instalaciones deportivas</h3>
+                    <p>Canchas múltiples y espacios para actividades físicas.</p>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-theater-masks"></i>
+                    <h3>Auditorio</h3>
+                    <p>Espacio para charlas, presentaciones y actos escolares.</p>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Comedor Escolar</h3>
+                    <p>Servicio de alimentación balanceada y nutritiva para nuestros estudiantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias Section -->
+    <section id="noticias" class="section">
+        <div class="container">
+            <h2 class="section-title">Noticias y Avisos</h2>
+            <div class="noticias-container">
+                <div class="noticias-filtros">
+                    <button class="filtro-btn active" data-categoria="todos">Todos</button>
+                    <button class="filtro-btn" data-categoria="academico">Académico</button>
+                    <button class="filtro-btn" data-categoria="eventos">Eventos</button>
+                    <button class="filtro-btn" data-categoria="avisos">Avisos</button>
+                    <button class="filtro-btn" data-categoria="logros">Logros</button>
+                </div>
+                <div class="noticias-grid" id="noticiasGrid">
+                    <!-- Las noticias se cargarán dinámicamente aquí -->
+                </div>
+                <div class="noticias-pagination" id="noticiasPagination">
+                    <!-- Paginación se generará dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-content-centered">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Dirección</h3>
+                        <p>Av. Nuestra Señora de la Asuncion y Lomas Valetinas 249, Asuncion Paraguay</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Teléfono</h3>
+                        <p>(595+) 971 759 998</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>secretariaeenc1@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Horario</h3>
+                        <p>Lunes a Viernes: 7:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Escuela Nacional Comercio 1</h3>
+                    <p>Educación de excelencia para formar líderes del mañana.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/enc12017/?locale=es_LA" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/escuelacomerciouno/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#academico">Académico</a></li>
+                        <li><a href="#instalaciones">Instalaciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Información</h3>
+                    <ul>
+                        <li><a href="#">Matrícula</a></li>
+                        <li><a href="#">Tasas</a></li>
+                        <li><a href="#">Calendario Escolar</a></li>
+                        <li><a href="#">Noticias</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Escuela Nacional De Comercio Nº1 Todos los derechos reservados.</p>
+                <p>Página realizada por alumnos del 3ro BTI 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
