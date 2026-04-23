@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachillerato - ESCUELA NACIONAL DE COMERCIO 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrcVYrQgwZhnRDFEZ7UQ_D7Hfi5-6IQIfZUw&s" alt="Logo ESCUELA" class="logo-img">
+                    <h1>ESCUELA NACIONAL DE COMERCIO N°1 "ALFONSO B. CAMPOS"</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#nosotros" class="nav-link">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#academico" class="nav-link">Académico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#instalaciones" class="nav-link">Instalaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#noticias" class="nav-link">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="postulantes.html" class="nav-link">Postulantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contacto" class="nav-link">Contacto</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bachillerato Detalle -->
+    <section class="bachillerato-detalle">
+        <div class="container">
+            <div class="bachillerato-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+                <span class="separator">/</span>
+                <a href="index.html#academico">Académico</a>
+                <span class="separator">/</span>
+                <span class="current">Bachillerato</span>
+            </div>
+            
+            <div class="bachillerato-header">
+                <div class="bachillerato-icono">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="bachillerato-info">
+                    <h1 class="bachillerato-titulo">Bachillerato Técnico</h1>
+                    <p class="bachillerato-subtitulo">Formación técnica profesional de excelencia</p>
+                    <div class="bachillerato-meta">
+                        <span class="duracion"><i class="fas fa-clock"></i> Duración: 3 años</span>
+                        <span class="modalidad"><i class="fas fa-certificate"></i> Modalidad: Técnica</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bachillerato-content">
+                <div class="bachillerato-descripcion">
+                    <h2>Descripción del Bachillerato</h2>
+                    <p>Este bachillerato técnico está diseñado para formar profesionales con sólidos conocimientos teóricos y prácticos, preparando a los estudiantes para insertarse exitosamente en el mercado laboral o continuar estudios superiores.</p>
+                </div>
+                
+                <div class="bachillerato-perfiles">
+                    <div class="perfil-ingreso">
+                        <h3><i class="fas fa-user-plus"></i> Perfil de Ingreso</h3>
+                        <ul class="perfil-lista">
+                            <li>Interés en el área técnica y profesional</li>
+                            <li>Capacidad de análisis y resolución de problemas</li>
+                            <li>Compromiso con el aprendizaje continuo</li>
+                            <li>Habilidades de comunicación y trabajo en equipo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="perfil-egreso">
+                        <h3><i class="fas fa-user-graduate"></i> Perfil de Egreso</h3>
+                        <ul class="perfil-lista">
+                            <li>Competencias técnicas especializadas</li>
+                            <li>Capacidad de liderazgo y gestión</li>
+                            <li>Adaptabilidad a cambios tecnológicos</li>
+                            <li>Ética profesional y responsabilidad social</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bachillerato-materias">
+                    <h2><i class="fas fa-book"></i> Plan de Estudios por Año</h2>
+                    
+                    <div class="materias-iconos">
+                        <div class="materia-icono" data-ano="1">
+                            <div class="icono-wrapper">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>1er Año</span>
+                            </div>
+                        </div>
+                        <div class="materia-icono" data-ano="2">
+                            <div class="icono-wrapper">
+                                <i class="fas fa-book-open"></i>
+                                <span>2do Año</span>
+                            </div>
+                        </div>
+                        <div class="materia-icono" data-ano="3">
+                            <div class="icono-wrapper">
+                                <i class="fas fa-award"></i>
+                                <span>3er Año</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Secciones para Contabilidad -->
+                <div class="bachillerato-secciones" id="seccionesContabilidad" style="display: none;">
+                    <h2><i class="fas fa-users"></i> Secciones Disponibles</h2>
+                    <div class="secciones-grid">
+                        <div class="seccion-card">
+                            <h3><i class="fas fa-a"></i> Sección A</h3>
+                            <p>Horario: Mañana (7:00 - 12:00)</p>
+                            <ul class="seccion-caracteristicas">
+                                <li>Enfoque en Contabilidad General</li>
+                                <li>Prácticas empresariales intensivas</li>
+                                <li>Proyectos de simulación</li>
+                            </ul>
+                        </div>
+                        <div class="seccion-card">
+                            <h3><i class="fas fa-b"></i> Sección B</h3>
+                            <p>Horario: Tarde (13:00 - 18:00)</p>
+                            <ul class="seccion-caracteristicas">
+                                <li>Enfoque en Auditoría y Costos</li>
+                                <li>Análisis financiero avanzado</li>
+                                <li>Consultoría empresarial</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bachillerato-salidas">
+                    <h2><i class="fas fa-briefcase"></i> Salidas Laborales</h2>
+                    <div class="salidas-grid">
+                        <div class="salida-item">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Contador Público</h4>
+                            <p>Gestión de contabilidad financiera y fiscal</p>
+                        </div>
+                        <div class="salida-item">
+                            <i class="fas fa-coins"></i>
+                            <h4>Administrador</h4>
+                            <p>Gestión empresarial y administración de recursos</p>
+                        </div>
+                        <div class="salida-item">
+                            <i class="fas fa-handshake"></i>
+                            <h4>Recursos Humanos</h4>
+                            <p>Gestión de personal y desarrollo organizacional</p>
+                        </div>
+                        <div class="salida-item">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Emprendedor</h4>
+                            <p>Creación y gestión de propios negocios</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="volver-academico">
+                <a href="index.html#academico" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver a Oferta Académica
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ESCUELA NACIONAL DE COMERCIO 1</h3>
+                    <p>Más de 100 años de trayectoria educativa formando líderes del mañana.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#academico">Académico</a></li>
+                        <li><a href="index.html#instalaciones">Instalaciones</a></li>
+                        <li><a href="index.html#noticias">Noticias</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Nuestra Señora de la Asuncion y Lomas Valetinas 249</p>
+                    <p><i class="fas fa-phone"></i> (595+) 971 759 998</p>
+                    <p><i class="fas fa-envelope"></i> secretariaeenc1@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESCUELA NACIONAL DE COMERCIO 1. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

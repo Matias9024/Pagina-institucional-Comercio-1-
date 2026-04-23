@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materias - ESCUELA NACIONAL DE COMERCIO 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrcVYrQgwZhnRDFEZ7UQ_D7Hfi5-6IQIfZUw&s" alt="Logo ESCUELA" class="logo-img">
+                    <h1>ESCUELA NACIONAL DE COMERCIO N°1 "ALFONSO B. CAMPOS"</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#nosotros" class="nav-link">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#academico" class="nav-link">Académico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#instalaciones" class="nav-link">Instalaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#noticias" class="nav-link">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="postulantes.html" class="nav-link">Postulantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contacto" class="nav-link">Contacto</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Materias Detalle -->
+    <section class="materias-detalle">
+        <div class="container">
+            <div class="materias-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+                <span class="separator">/</span>
+                <a href="index.html#academico">Académico</a>
+                <span class="separator">/</span>
+                <a href="bachillerato.html" class="bachillerato-link">Bachillerato</a>
+                <span class="separator">/</span>
+                <span class="current">Materias</span>
+            </div>
+            
+            <div class="materias-header">
+                <div class="materias-icono-grande">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="materias-info">
+                    <h1 class="materias-titulo">Materias del Bachillerato</h1>
+                    <p class="materias-subtitulo">Año: <span id="anoActual">1er Año</span></p>
+                    <p class="materias-bachillerato">Bachillerato: <span id="bachilleratoActual">Técnico</span></p>
+                </div>
+            </div>
+            
+            <div class="materias-content">
+                <div class="materias-tabs">
+                    <button class="tab-btn active" data-tab="comunes">
+                        <i class="fas fa-book"></i>
+                        Materias Comunes
+                    </button>
+                    <button class="tab-btn" data-tab="tecnicas">
+                        <i class="fas fa-cogs"></i>
+                        Materias Técnicas
+                    </button>
+                </div>
+                
+                <div class="materias-tab-content">
+                    <div class="tab-pane active" id="comunes">
+                        <h3><i class="fas fa-book"></i> Materias Comunes</h3>
+                        <div class="materias-grid">
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Lengua Castellana y Literatura</h4>
+                                    <p>Desarrollo de habilidades comunicativas y análisis literario</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Matemáticas</h4>
+                                    <p>Razonamiento lógico y resolución de problemas matemáticos</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Historia y Geografía</h4>
+                                    <p>Conocimiento del contexto histórico y geográfico mundial</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Ciencias Naturales</h4>
+                                    <p>Estudio de los fenómenos naturales y científicos</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Formación Ética y Ciudadana</h4>
+                                    <p>Desarrollo de valores y conciencia ciudadana</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Educación Física</h4>
+                                    <p>Desarrollo físico y deportivo integral</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-globe-americas"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Inglés</h4>
+                                    <p>Comunicación en lengua inglesa</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Arte y Cultura</h4>
+                                    <p>Expresión artística y apreciación cultural</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="tecnicas">
+                        <h3><i class="fas fa-cogs"></i> Materias Técnicas</h3>
+                        <div class="materias-grid">
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Contabilidad General</h4>
+                                    <p>Principios fundamentales de contabilidad financiera</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Matemáticas Financieras</h4>
+                                    <p>Cálculos financieros y análisis de inversiones</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Informática Aplicada</h4>
+                                    <p>Uso de herramientas tecnológicas en el ámbito profesional</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Economía Básica</h4>
+                                    <p>Principios económicos y mercado financiero</p>
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-icono">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="materia-info">
+                                    <h4>Administración I</h4>
+                                    <p>Conceptos básicos de gestión empresarial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="materias-anos">
+                    <h3><i class="fas fa-calendar-alt"></i> Otros Años</h3>
+                    <div class="anos-navegacion">
+                        <button class="ano-btn" data-ano="1">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>1er Año</span>
+                        </button>
+                        <button class="ano-btn" data-ano="2">
+                            <i class="fas fa-book-open"></i>
+                            <span>2do Año</span>
+                        </button>
+                        <button class="ano-btn" data-ano="3">
+                            <i class="fas fa-award"></i>
+                            <span>3er Año</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="volver-bachillerato">
+                <a href="bachillerato.html" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver al Bachillerato
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ESCUELA NACIONAL DE COMERCIO 1</h3>
+                    <p>Más de 100 años de trayectoria educativa formando líderes del mañana.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#academico">Académico</a></li>
+                        <li><a href="index.html#instalaciones">Instalaciones</a></li>
+                        <li><a href="index.html#noticias">Noticias</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Nuestra Señora de la Asuncion y Lomas Valetinas 249</p>
+                    <p><i class="fas fa-phone"></i> (595+) 971 759 998</p>
+                    <p><i class="fas fa-envelope"></i> secretariaeenc1@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESCUELA NACIONAL DE COMERCIO 1. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

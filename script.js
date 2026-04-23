@@ -1,6 +1,650 @@
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Navegación a noticias individuales
+    function setupNoticiaNavigation() {
+        // Detectar si estamos en la página de noticias
+        const isNoticiaPage = window.location.pathname.includes('noticia.html');
+        
+        if (!isNoticiaPage) {
+            // En página principal - agregar click handlers a las noticias
+            const noticiasGrid = document.getElementById('noticiasGrid');
+            if (noticiasGrid) {
+                noticiasGrid.addEventListener('click', function(e) {
+                    const noticiaCard = e.target.closest('.noticia-card');
+                    if (noticiaCard) {
+                        e.preventDefault();
+                        // Guardar información de la noticia para la página individual
+                        const noticiaData = {
+                            titulo: noticiaCard.querySelector('.noticia-titulo')?.textContent || 'Título de la Noticia',
+                            categoria: noticiaCard.querySelector('.noticia-categoria')?.textContent || 'General',
+                            fecha: noticiaCard.querySelector('.noticia-fecha')?.textContent || '15 de abril de 2026',
+                            descripcion: noticiaCard.querySelector('.noticia-descripcion')?.textContent || 'Descripción de la noticia...'
+                        };
+                        
+                        // Guardar en localStorage para la página individual
+                        localStorage.setItem('noticiaActual', JSON.stringify(noticiaData));
+                        
+                        // Navegar a la página individual
+                        window.location.href = 'noticia.html';
+                    }
+                });
+            }
+        } else {
+            // En página individual - cargar datos de la noticia
+            loadNoticiaData();
+        }
+    }
+    
+    function loadNoticiaData() {
+        const noticiaData = localStorage.getItem('noticiaActual');
+        if (noticiaData) {
+            const noticia = JSON.parse(noticiaData);
+            
+            // Actualizar título
+            const tituloElement = document.querySelector('.noticia-titulo');
+            if (tituloElement) {
+                tituloElement.textContent = noticia.titulo;
+            }
+            
+            // Actualizar breadcrumb
+            const currentBreadcrumb = document.querySelector('.noticia-breadcrumb .current');
+            if (currentBreadcrumb) {
+                currentBreadcrumb.textContent = noticia.titulo;
+            }
+            
+            // Actualizar meta información
+            const categoriaElement = document.querySelector('.noticia-meta .categoria');
+            if (categoriaElement) {
+                categoriaElement.innerHTML = `<i class="fas fa-tag"></i> ${noticia.categoria}`;
+            }
+            
+            const fechaElement = document.querySelector('.noticia-meta .fecha');
+            if (fechaElement) {
+                fechaElement.innerHTML = `<i class="fas fa-calendar"></i> ${noticia.fecha}`;
+            }
+            
+            // Actualizar contenido principal
+            const leadParagraph = document.querySelector('.noticia-contenido .lead');
+            if (leadParagraph) {
+                leadParagraph.textContent = noticia.descripcion;
+            }
+            
+            // Limpiar localStorage para no afectar futuras navegaciones
+            localStorage.removeItem('noticiaActual');
+        }
+    }
+    
+    // Inicializar navegación de noticias
+    setupNoticiaNavigation();
+    
+    // Navegación a bachilleratos individuales
+    function setupBachilleratoNavigation() {
+        // Detectar si estamos en la página de bachilleratos
+        const isBachilleratoPage = window.location.pathname.includes('bachillerato.html');
+        
+        if (!isBachilleratoPage) {
+            // En página principal - agregar click handlers a los botones "ver más información"
+            const academicSection = document.getElementById('academico');
+            if (academicSection) {
+                academicSection.addEventListener('click', function(e) {
+                    const btnInfo = e.target.closest('.ver-mas-btn');
+                    if (btnInfo) {
+                        e.preventDefault();
+                        
+                        // Obtener la información del bachillerato
+                        const academicCard = btnInfo.closest('.academic-card');
+                        const bachilleratoData = extractBachilleratoData(academicCard);
+                        
+                        // Guardar en localStorage para la página individual
+                        localStorage.setItem('bachilleratoActual', JSON.stringify(bachilleratoData));
+                        
+                        // Navegar a la página individual
+                        window.location.href = 'bachillerato.html';
+                    }
+                });
+            }
+        } else {
+            // En página individual - cargar datos del bachillerato
+            loadBachilleratoData();
+        }
+    }
+    
+    function extractBachilleratoData(card) {
+        const title = card.querySelector('h3')?.textContent || 'Bachillerato Técnico';
+        const description = card.querySelector('p')?.textContent || 'Descripción del bachillerato';
+        
+        // Determinar el tipo de bachillerato y configurar datos específicos
+        let bachilleratoInfo = {
+            titulo: title,
+            subtitulo: description,
+            duracion: '3 años',
+            modalidad: 'Técnica'
+        };
+        
+        // Configurar según el tipo de bachillerato
+        if (title.toLowerCase().includes('contabilidad')) {
+            bachilleratoInfo = {
+                ...bachilleratoInfo,
+                icono: 'fas fa-calculator',
+                materias: getMateriasContabilidad(),
+                salidas: getSalidasContabilidad(),
+                tieneSecciones: true
+            };
+        } else if (title.toLowerCase().includes('diseño')) {
+            bachilleratoInfo = {
+                ...bachilleratoInfo,
+                icono: 'fas fa-palette',
+                materias: getMateriasDiseno(),
+                salidas: getSalidasDiseno(),
+                tieneSecciones: false
+            };
+        } else if (title.toLowerCase().includes('cooperativismo')) {
+            bachilleratoInfo = {
+                ...bachilleratoInfo,
+                icono: 'fas fa-users',
+                materias: getMateriasCooperativismo(),
+                salidas: getSalidasCooperativismo(),
+                tieneSecciones: false
+            };
+        } else if (title.toLowerCase().includes('asistencia')) {
+            bachilleratoInfo = {
+                ...bachilleratoInfo,
+                icono: 'fas fa-running',
+                materias: getMateriasAsistencia(),
+                salidas: getSalidasAsistencia(),
+                tieneSecciones: false
+            };
+        }
+        
+        return bachilleratoInfo;
+    }
+    
+    function getMateriasContabilidad() {
+        return {
+            primerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Ciencias Naturales', 'Formación Ética y Ciudadana', 'Educación Física', 'Inglés', 'Arte y Cultura'],
+                tecnicas: ['Contabilidad General', 'Matemáticas Financieras', 'Informática Aplicada', 'Economía Básica', 'Administración I']
+            },
+            segundoAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Química', 'Filosofía', 'Educación Física', 'Inglés'],
+                tecnicas: ['Contabilidad Avanzada', 'Costos y Presupuestos', 'Derecho Comercial', 'Tributación', 'Administración II']
+            },
+            tercerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas Financieras', 'Sociología', 'Psicología', 'Educación Física', 'Inglés Técnico', 'Proyecto de Vida'],
+                tecnicas: ['Auditoría', 'Análisis Financiero', 'Contabilidad de Gestión', 'Sistemas Contables', 'Práctica Profesional']
+            }
+        };
+    }
+    
+    function getMateriasAdministracion() {
+        return {
+            primerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Ciencias Naturales', 'Formación Ética y Ciudadana', 'Educación Física', 'Inglés', 'Arte y Cultura'],
+                tecnicas: ['Principios de Administración', 'Organización Empresarial', 'Contabilidad Básica', 'Economía General', 'Informática']
+            },
+            segundoAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Química', 'Filosofía', 'Educación Física', 'Inglés'],
+                tecnicas: ['Administración de Personal', 'Marketing Básico', 'Gestión Financiera', 'Derecho Laboral', 'Sistemas de Información']
+            },
+            tercerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas Financieras', 'Sociología', 'Psicología', 'Educación Física', 'Inglés Técnico', 'Proyecto de Vida'],
+                tecnicas: ['Gerencia Estratégica', 'Emprendimiento', 'Gestión de Proyectos', 'Calidad Total', 'Práctica Administrativa']
+            }
+        };
+    }
+    
+    function getMateriasSalud() {
+        return {
+            primerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Biología', 'Formación Ética y Ciudadana', 'Educación Física', 'Inglés', 'Arte y Cultura'],
+                tecnicas: ['Anatomía y Fisiología', 'Fundamentos de Enfermería', 'Primeros Auxilios', 'Nutrición Básica', 'Psicología General']
+            },
+            segundoAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Química', 'Filosofía', 'Educación Física', 'Inglés'],
+                tecnicas: ['Enfermería Médico-Quirúrgica', 'Farmacología', 'Salud Pública', 'Ética Profesional', 'Salud Comunitaria']
+            },
+            tercerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Sociología', 'Psicología', 'Educación Física', 'Inglés Técnico', 'Proyecto de Vida'],
+                tecnicas: ['Enfermería Avanzada', 'Gestión de Servicios de Salud', 'Salud Mental', 'Investigación en Salud', 'Práctica Clínica']
+            }
+        };
+    }
+    
+    function getMateriasMarketing() {
+        return {
+            primerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Ciencias Naturales', 'Formación Ética y Ciudadana', 'Educación Física', 'Inglés', 'Arte y Cultura'],
+                tecnicas: ['Fundamentos de Marketing', 'Comportamiento del Consumidor', 'Diseño Gráfico', 'Comunicación', 'Informática']
+            },
+            segundoAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Química', 'Filosofía', 'Educación Física', 'Inglés'],
+                tecnicas: ['Marketing Digital', 'Publicidad', 'Relaciones Públicas', 'Investigación de Mercados', 'Ventas']
+            },
+            tercerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Sociología', 'Psicología', 'Educación Física', 'Inglés Técnico', 'Proyecto de Vida'],
+                tecnicas: ['Estrategias de Marketing', 'Branding', 'Marketing Internacional', 'Gestión de Campañas', 'Práctica de Marketing']
+            }
+        };
+    }
+    
+    function getSalidasContabilidad() {
+        return [
+            { titulo: 'Contador Público', descripcion: 'Gestión de contabilidad financiera y fiscal', icono: 'fas fa-calculator' },
+            { titulo: 'Auditor', descripcion: 'Revisión y control de sistemas contables', icono: 'fas fa-microscope' },
+            { titulo: 'Asesor Financiero', descripcion: 'Consultoría en gestión financiera', icono: 'fas fa-chart-pie' },
+            { titulo: 'Analista de Costos', descripcion: 'Control y análisis de costos empresariales', icono: 'fas fa-coins' }
+        ];
+    }
+    
+    function getSalidasAdministracion() {
+        return [
+            { titulo: 'Administrador', descripcion: 'Gestión empresarial y administración de recursos', icono: 'fas fa-briefcase' },
+            { titulo: 'Gerente de Ventas', descripcion: 'Liderazgo en equipos comerciales', icono: 'fas fa-handshake' },
+            { titulo: 'Recursos Humanos', descripcion: 'Gestión de personal y desarrollo organizacional', icono: 'fas fa-users' },
+            { titulo: 'Emprendedor', descripcion: 'Creación y gestión de propios negocios', icono: 'fas fa-rocket' }
+        ];
+    }
+    
+    function getSalidasSalud() {
+        return [
+            { titulo: 'Técnico en Enfermería', descripcion: 'Atención directa a pacientes', icono: 'fas fa-user-nurse' },
+            { titulo: 'Promotor de Salud', descripcion: 'Educación y prevención en salud comunitaria', icono: 'fas fa-heart' },
+            { titulo: 'Auxiliar de Farmacia', descripcion: 'Gestión de medicamentos y atención farmacéutica', icono: 'fas fa-pills' },
+            { titulo: 'Cuidador de Salud', descripcion: 'Atención integral de salud', icono: 'fas fa-hands-helping' }
+        ];
+    }
+    
+    function getSalidasMarketing() {
+        return [
+            { titulo: 'Especialista en Marketing', descripcion: 'Estrategias de mercado y comunicación', icono: 'fas fa-bullhorn' },
+            { titulo: 'Community Manager', descripcion: 'Gestión de redes sociales y comunidades', icono: 'fas fa-hashtag' },
+            { titulo: 'Analista de Mercado', descripcion: 'Investigación y análisis de tendencias', icono: 'fas fa-chart-line' },
+            { titulo: 'Publicista', descripcion: 'Creación y gestión de campañas publicitarias', icono: 'fas fa-ad' }
+        ];
+    }
+    
+    function getMateriasDiseno() {
+        return {
+            primerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Ciencias Naturales', 'Formación Ética y Ciudadana', 'Educación Física', 'Inglés', 'Arte y Cultura'],
+                tecnicas: ['Diseño Básico', 'Teoría del Color', 'Dibujo Técnico', 'Informática Aplicada', 'Fotografía Digital']
+            },
+            segundoAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Química', 'Filosofía', 'Educación Física', 'Inglés'],
+                tecnicas: ['Diseño Gráfico', 'Edición Digital', 'Tipografía', 'Branding', 'Animación Básica']
+            },
+            tercerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Sociología', 'Psicología', 'Educación Física', 'Inglés Técnico', 'Proyecto de Vida'],
+                tecnicas: ['Diseño Web', 'Producción Audiovisual', 'Marketing Visual', 'Portafolio Profesional', 'Práctica de Diseño']
+            }
+        };
+    }
+    
+    function getSalidasDiseno() {
+        return [
+            { titulo: 'Diseñador Gráfico', descripcion: 'Creación de identidad visual y branding', icono: 'fas fa-palette' },
+            { titulo: 'Editor Digital', descripcion: 'Edición de imágenes y contenido multimedia', icono: 'fas fa-edit' },
+            { titulo: 'Diseñador Web', descripcion: 'Diseño y desarrollo de interfaces digitales', icono: 'fas fa-laptop' },
+            { titulo: 'Ilustrador', descripcion: 'Creación de ilustraciones y arte digital', icono: 'fas fa-pencil-ruler' }
+        ];
+    }
+    
+    function getMateriasCooperativismo() {
+        return {
+            primerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Ciencias Naturales', 'Formación Ética y Ciudadana', 'Educación Física', 'Inglés', 'Arte y Cultura'],
+                tecnicas: ['Principios de Cooperativismo', 'Economía Social', 'Administración Básica', 'Contabilidad General', 'Derecho Cooperativo']
+            },
+            segundoAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Química', 'Filosofía', 'Educación Física', 'Inglés'],
+                tecnicas: ['Gestión de Cooperativas', 'Finanzas Sociales', 'Marketing Cooperativo', 'Legislación Laboral', 'Sistemas de Información']
+            },
+            tercerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Sociología', 'Psicología', 'Educación Física', 'Inglés Técnico', 'Proyecto de Vida'],
+                tecnicas: ['Desarrollo Comunitario', 'Emprendimiento Social', 'Auditoría Cooperativa', 'Planificación Estratégica', 'Práctica Cooperativa']
+            }
+        };
+    }
+    
+    function getSalidasCooperativismo() {
+        return [
+            { titulo: 'Gerente de Cooperativa', descripcion: 'Administración y gestión de cooperativas', icono: 'fas fa-users' },
+            { titulo: 'Asesor Cooperativo', descripcion: 'Consultoría en economía social', icono: 'fas fa-hands-helping' },
+            { titulo: 'Promotor Social', descripcion: 'Desarrollo comunitario y social', icono: 'fas fa-home' },
+            { titulo: 'Auditor Cooperativo', descripcion: 'Control y auditoría de cooperativas', icono: 'fas fa-clipboard-check' }
+        ];
+    }
+    
+    function getMateriasAsistencia() {
+        return {
+            primerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Biología', 'Formación Ética y Ciudadana', 'Educación Física', 'Inglés', 'Arte y Cultura'],
+                tecnicas: ['Anatomía Básica', 'Fisiología del Ejercicio', 'Nutrición Deportiva', 'Primeros Auxilios', 'Psicología Deportiva']
+            },
+            segundoAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Historia y Geografía', 'Química', 'Filosofía', 'Educación Física', 'Inglés'],
+                tecnicas: ['Entrenamiento Deportivo', 'Preparación Física', 'Kinesiología', 'Gestión de Eventos', 'Seguridad Deportiva']
+            },
+            tercerAno: {
+                comunes: ['Lengua Castellana y Literatura', 'Matemáticas', 'Sociología', 'Psicología', 'Educación Física', 'Inglés Técnico', 'Proyecto de Vida'],
+                tecnicas: ['Ciencias del Deporte', 'Rehabilitación Deportiva', 'Organización de Competencias', 'Nutrición Avanzada', 'Práctica Deportiva']
+            }
+        };
+    }
+    
+    function getSalidasAsistencia() {
+        return [
+            { titulo: 'Entrenador Deportivo', descripcion: 'Preparación física y entrenamiento', icono: 'fas fa-running' },
+            { titulo: 'Asistente Deportivo', descripcion: 'Apoyo en actividades deportivas', icono: 'fas fa-hands-helping' },
+            { titulo: 'Nutricionista Deportivo', descripcion: 'Planificación nutricional para deportistas', icono: 'fas fa-apple-alt' },
+            { titulo: 'Organizador de Eventos', descripcion: 'Gestión de eventos deportivos', icono: 'fas fa-calendar-alt' }
+        ];
+    }
+    
+    function loadBachilleratoData() {
+        const bachilleratoData = localStorage.getItem('bachilleratoActual');
+        if (bachilleratoData) {
+            const bachillerato = JSON.parse(bachilleratoData);
+            
+            // Actualizar título y descripción
+            const tituloElement = document.querySelector('.bachillerato-titulo');
+            if (tituloElement) {
+                tituloElement.textContent = bachillerato.titulo;
+            }
+            
+            const subtituloElement = document.querySelector('.bachillerato-subtitulo');
+            if (subtituloElement) {
+                subtituloElement.textContent = bachillerato.subtitulo;
+            }
+            
+            // Actualizar ícono
+            const iconoElement = document.querySelector('.bachillerato-icono i');
+            if (iconoElement && bachillerato.icono) {
+                iconoElement.className = bachillerato.icono;
+            }
+            
+            // Actualizar breadcrumb
+            const currentBreadcrumb = document.querySelector('.bachillerato-breadcrumb .current');
+            if (currentBreadcrumb) {
+                currentBreadcrumb.textContent = bachillerato.titulo;
+            }
+            
+            // Cargar materias si están disponibles
+            if (bachillerato.materias) {
+                loadMaterias(bachillerato.materias);
+            }
+            
+            // Cargar salidas laborales si están disponibles
+            if (bachillerato.salidas) {
+                loadSalidas(bachillerato.salidas);
+            }
+            
+            // Mostrar/ocultar secciones para contabilidad
+            const seccionesContabilidad = document.getElementById('seccionesContabilidad');
+            if (seccionesContabilidad) {
+                seccionesContabilidad.style.display = bachillerato.tieneSecciones ? 'block' : 'none';
+            }
+            
+            // Limpiar localStorage
+            localStorage.removeItem('bachilleratoActual');
+        }
+    }
+    
+    function loadMaterias(materias) {
+        // Primer año
+        const primerAnoComunes = document.querySelector('.materias-year:nth-child(1) .materia-card:nth-child(1) .materia-lista');
+        const primerAnoTecnicas = document.querySelector('.materias-year:nth-child(1) .materia-card:nth-child(2) .materia-lista');
+        
+        if (primerAnoComunes && materias.primerAno.comunes) {
+            primerAnoComunes.innerHTML = materias.primerAno.comunes.map(materia => `<li>${materia}</li>`).join('');
+        }
+        if (primerAnoTecnicas && materias.primerAno.tecnicas) {
+            primerAnoTecnicas.innerHTML = materias.primerAno.tecnicas.map(materia => `<li>${materia}</li>`).join('');
+        }
+        
+        // Segundo año
+        const segundoAnoComunes = document.querySelector('.materias-year:nth-child(2) .materia-card:nth-child(1) .materia-lista');
+        const segundoAnoTecnicas = document.querySelector('.materias-year:nth-child(2) .materia-card:nth-child(2) .materia-lista');
+        
+        if (segundoAnoComunes && materias.segundoAno.comunes) {
+            segundoAnoComunes.innerHTML = materias.segundoAno.comunes.map(materia => `<li>${materia}</li>`).join('');
+        }
+        if (segundoAnoTecnicas && materias.segundoAno.tecnicas) {
+            segundoAnoTecnicas.innerHTML = materias.segundoAno.tecnicas.map(materia => `<li>${materia}</li>`).join('');
+        }
+        
+        // Tercer año
+        const tercerAnoComunes = document.querySelector('.materias-year:nth-child(3) .materia-card:nth-child(1) .materia-lista');
+        const tercerAnoTecnicas = document.querySelector('.materias-year:nth-child(3) .materia-card:nth-child(2) .materia-lista');
+        
+        if (tercerAnoComunes && materias.tercerAno.comunes) {
+            tercerAnoComunes.innerHTML = materias.tercerAno.comunes.map(materia => `<li>${materia}</li>`).join('');
+        }
+        if (tercerAnoTecnicas && materias.tercerAno.tecnicas) {
+            tercerAnoTecnicas.innerHTML = materias.tercerAno.tecnicas.map(materia => `<li>${materia}</li>`).join('');
+        }
+    }
+    
+    function loadSalidas(salidas) {
+        const salidasGrid = document.querySelector('.salidas-grid');
+        if (salidasGrid && salidas.length > 0) {
+            salidasGrid.innerHTML = salidas.map(salida => `
+                <div class="salida-item">
+                    <i class="${salida.icono}"></i>
+                    <h4>${salida.titulo}</h4>
+                    <p>${salida.descripcion}</p>
+                </div>
+            `).join('');
+        }
+    }
+    
+    // Inicializar navegación de bachilleratos
+    setupBachilleratoNavigation();
+    
+    // Navegación a página de materias
+    function setupMateriasNavigation() {
+        // Detectar si estamos en la página de materias
+        const isMateriasPage = window.location.pathname.includes('materias.html');
+        
+        if (!isMateriasPage) {
+            // En página de bachilleratos - agregar click handlers a los iconos de materias
+            const bachilleratoPage = document.querySelector('.bachillerato-detalle');
+            if (bachilleratoPage) {
+                bachilleratoPage.addEventListener('click', function(e) {
+                    const materiaIcono = e.target.closest('.materia-icono');
+                    if (materiaIcono) {
+                        e.preventDefault();
+                        
+                        // Obtener el año seleccionado
+                        const ano = materiaIcono.getAttribute('data-ano');
+                        
+                        // Obtener información del bachillerato actual
+                        const titulo = document.querySelector('.bachillerato-titulo')?.textContent || 'Bachillerato Técnico';
+                        
+                        // Guardar datos para la página de materias
+                        const materiasData = {
+                            bachillerato: titulo,
+                            ano: ano,
+                            anoTexto: getAnoTexto(ano)
+                        };
+                        
+                        // Guardar en localStorage para la página de materias
+                        localStorage.setItem('materiasActual', JSON.stringify(materiasData));
+                        
+                        // Navegar a la página de materias
+                        window.location.href = 'materias.html';
+                    }
+                });
+            }
+        } else {
+            // En página de materias - cargar datos
+            loadMateriasPageData();
+        }
+    }
+    
+    function getAnoTexto(ano) {
+        const anos = {
+            '1': '1er Año',
+            '2': '2do Año',
+            '3': '3er Año'
+        };
+        return anos[ano] || '1er Año';
+    }
+    
+    function loadMateriasPageData() {
+        const materiasData = localStorage.getItem('materiasActual');
+        if (materiasData) {
+            const materias = JSON.parse(materiasData);
+            
+            // Actualizar título y año
+            const anoActual = document.getElementById('anoActual');
+            if (anoActual) {
+                anoActual.textContent = materias.anoTexto;
+            }
+            
+            const bachilleratoActual = document.getElementById('bachilleratoActual');
+            if (bachilleratoActual) {
+                bachilleratoActual.textContent = materias.bachillerato;
+            }
+            
+            // Actualizar breadcrumb
+            const bachilleratoLink = document.querySelector('.bachillerato-link');
+            if (bachilleratoLink) {
+                bachilleratoLink.textContent = materias.bachillerato;
+            }
+            
+            // Actualizar icono principal según el año
+            const iconoGrande = document.querySelector('.materias-icono-grande i');
+            if (iconoGrande) {
+                const iconosPorAno = {
+                    '1': 'fas fa-graduation-cap',
+                    '2': 'fas fa-book-open',
+                    '3': 'fas fa-award'
+                };
+                iconoGrande.className = iconosPorAno[materias.ano] || 'fas fa-graduation-cap';
+            }
+            
+            // Cargar materias específicas según el bachillerato y año
+            loadMateriasEspecificas(materias.bachillerato, materias.ano);
+            
+            // Configurar navegación entre años
+            setupAnoNavigation(materias.bachillerato);
+            
+            // Limpiar localStorage
+            localStorage.removeItem('materiasActual');
+        }
+    }
+    
+    function loadMateriasEspecificas(bachillerato, ano) {
+        // Obtener materias según el tipo de bachillerato
+        let materias = null;
+        
+        if (bachillerato.toLowerCase().includes('contabilidad')) {
+            materias = getMateriasContabilidad();
+        } else if (bachillerato.toLowerCase().includes('diseño')) {
+            materias = getMateriasDiseno();
+        } else if (bachillerato.toLowerCase().includes('cooperativismo')) {
+            materias = getMateriasCooperativismo();
+        } else if (bachillerato.toLowerCase().includes('asistencia')) {
+            materias = getMateriasAsistencia();
+        }
+        
+        if (materias) {
+            const anoKey = `ano${ano}`;
+            const materiasAno = materias[anoKey] || materias.primerAno;
+            
+            // Actualizar materias comunes
+            const comunesGrid = document.querySelector('#comunes .materias-grid');
+            if (comunesGrid && materiasAno.comunes) {
+                comunesGrid.innerHTML = materiasAno.comunes.map(materia => `
+                    <div class="materia-item">
+                        <div class="materia-icono">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="materia-info">
+                            <h4>${materia}</h4>
+                            <p>Desarrollo de habilidades y conocimientos en ${materia.toLowerCase()}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            // Actualizar materias técnicas
+            const tecnicasGrid = document.querySelector('#tecnicas .materias-grid');
+            if (tecnicasGrid && materiasAno.tecnicas) {
+                tecnicasGrid.innerHTML = materiasAno.tecnicas.map(materia => `
+                    <div class="materia-item">
+                        <div class="materia-icono">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="materia-info">
+                            <h4>${materia}</h4>
+                            <p>Formación especializada en ${materia.toLowerCase()}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+    }
+    
+    function setupAnoNavigation(bachilleratoActual) {
+        const anoBtns = document.querySelectorAll('.ano-btn');
+        anoBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const ano = this.getAttribute('data-ano');
+                
+                // Guardar nuevos datos
+                const materiasData = {
+                    bachillerato: bachilleratoActual,
+                    ano: ano,
+                    anoTexto: getAnoTexto(ano)
+                };
+                
+                localStorage.setItem('materiasActual', JSON.stringify(materiasData));
+                
+                // Recargar la página con el nuevo año
+                location.reload();
+            });
+        });
+        
+        // Configurar tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remover clase active de todos los tabs y panes
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                
+                // Agregar clase active al tab y pane correspondiente
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    }
+    
+    // Inicializar navegación de materias
+    setupMateriasNavigation();
+
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    const nosotrosSection = document.getElementById('nosotros');
+    
+    window.addEventListener('scroll', function() {
+        const nosotrosPosition = nosotrosSection.offsetTop;
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition >= nosotrosPosition - 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
     // Carrusel de Bachilleratos
     const carousel = document.getElementById('academicCarousel');
     const cards = carousel.querySelectorAll('.academic-card');
