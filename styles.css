@@ -536,9 +536,9 @@ body {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(44, 82, 130, 0.2) 50%, rgba(15, 23, 42, 0.3) 100%),
-                url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyacp0fU_ceOItAZjDURmuhgVu766sdDuOVYnOrb3whrMQnrgZxx3k3rFQpZeXlU9NhXMbv8G-wOZami7vw6wvrMTpSeqLgx0C1QkYZkZpPpHPMy4J1uP3ioj8RgmdMDpnkjBt=w243-h174-n-k-no-nu');
+                url('https://www.image2url.com/r2/default/images/1776909254535-7f645657-dae0-4866-8846-9ef66083fee9.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: center 70%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     color: white;
@@ -766,7 +766,7 @@ body {
     width: 80px;
     height: 80px;
     margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #3498db 0%, #1e5f8e 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
