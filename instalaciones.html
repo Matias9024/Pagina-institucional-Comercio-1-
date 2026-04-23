@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalaciones - ESCUELA NACIONAL DE COMERCIO 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrcVYrQgwZhnRDFEZ7UQ_D7Hfi5-6IQIfZUw&s" alt="Logo ESCUELA" class="logo-img">
+                    <h1>ESCUELA NACIONAL DE COMERCIO N°1 "ALFONSO B. CAMPOS"</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#nosotros" class="nav-link">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#academico" class="nav-link">Académico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="instalaciones.html" class="nav-link">Instalaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#noticias" class="nav-link">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="postulantes.html" class="nav-link">Postulantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contacto" class="nav-link">Contacto</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Instalaciones Section -->
+    <section class="instalaciones-section">
+        <div class="container">
+            <div class="instalaciones-header">
+                <h1>Nuestras Instalaciones</h1>
+                <p>Conoce los espacios donde formamos a los líderes del mañana</p>
+            </div>
+            
+            <!-- Carrusel de Instalaciones -->
+            <div class="instalaciones-carrusel">
+                <button class="carrusel-btn prev-btn" id="instalacionPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carrusel-wrapper">
+                    <div class="instalaciones-slider" id="instalacionesSlider">
+                        <!-- Laboratorios de Informática -->
+                        <div class="instalacion-slide active" data-instalacion="informatica">
+                            <div class="instalacion-imagen">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="instalacion-contenido">
+                                <div class="instalacion-badge">
+                                    <i class="fas fa-star"></i>
+                                    <span>Tecnología</span>
+                                </div>
+                                <h2>Laboratorios de Informática</h2>
+                                <p class="instalacion-descripcion">
+                                    Equipados con tecnología de última generación para el aprendizaje digital. 
+                                    Contamos con computadoras de alto rendimiento, software especializado y conexión a internet de alta velocidad.
+                                </p>
+                                <div class="instalacion-detalles">
+                                    <div class="detalle-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Capacidad: 30 estudiantes</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Horario: 7:00 AM - 5:00 PM</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dirigido a: Todos los bachilleratos</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Laboratorios de Salud -->
+                        <div class="instalacion-slide" data-instalacion="salud">
+                            <div class="instalacion-imagen">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="instalacion-contenido">
+                                <div class="instalacion-badge">
+                                    <i class="fas fa-heartbeat"></i>
+                                    <span>Salud</span>
+                                </div>
+                                <h2>Laboratorios de Ciencias</h2>
+                                <p class="instalacion-descripcion">
+                                    Laboratorios equipados para prácticas de física, química y biología. 
+                                    Cuentan con microscopios, material de laboratorio y equipos de seguridad.
+                                </p>
+                                <div class="instalacion-detalles">
+                                    <div class="detalle-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Capacidad: 25 estudiantes</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Horario: 7:00 AM - 5:00 PM</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dirigido a: Bachillerato en Salud</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Biblioteca -->
+                        <div class="instalacion-slide" data-instalacion="biblioteca">
+                            <div class="instalacion-imagen">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="instalacion-contenido">
+                                <div class="instalacion-badge">
+                                    <i class="fas fa-book"></i>
+                                    <span>Cultura</span>
+                                </div>
+                                <h2>Biblioteca</h2>
+                                <p class="instalacion-descripcion">
+                                    Amplio acervo bibliográfico y recursos digitales para el estudio. 
+                                    Cuenta con área de lectura, computadoras con acceso a bases de datos y zona de estudio grupal.
+                                </p>
+                                <div class="instalacion-detalles">
+                                    <div class="detalle-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Capacidad: 50 personas</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Horario: 7:00 AM - 6:00 PM</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dirigido a: Toda la comunidad educativa</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Instalaciones Deportivas -->
+                        <div class="instalacion-slide" data-instalacion="deportes">
+                            <div class="instalacion-imagen">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="instalacion-contenido">
+                                <div class="instalacion-badge">
+                                    <i class="fas fa-futbol"></i>
+                                    <span>Deporte</span>
+                                </div>
+                                <h2>Instalaciones Deportivas</h2>
+                                <p class="instalacion-descripcion">
+                                    Canchas múltiples y espacios para actividades físicas. 
+                                    Contamos con cancha de fútbol, básquet, vóley y gimnasio equipado.
+                                </p>
+                                <div class="instalacion-detalles">
+                                    <div class="detalle-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Capacidad: 100 personas</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Horario: 7:00 AM - 6:00 PM</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dirigido a: Todos los estudiantes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Auditorio -->
+                        <div class="instalacion-slide" data-instalacion="auditorio">
+                            <div class="instalacion-imagen">
+                                <i class="fas fa-theater-masks"></i>
+                            </div>
+                            <div class="instalacion-contenido">
+                                <div class="instalacion-badge">
+                                    <i class="fas fa-microphone"></i>
+                                    <span>Eventos</span>
+                                </div>
+                                <h2>Auditorio</h2>
+                                <p class="instalacion-descripcion">
+                                    Espacio para charlas, presentaciones y actos escolares. 
+                                    Equipado con sistema de sonido, proyector y escenario profesional.
+                                </p>
+                                <div class="instalacion-detalles">
+                                    <div class="detalle-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Capacidad: 300 personas</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Horario: 8:00 AM - 5:00 PM</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dirigido a: Eventos institucionales</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comedor Escolar -->
+                        <div class="instalacion-slide" data-instalacion="comedor">
+                            <div class="instalacion-imagen">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="instalacion-contenido">
+                                <div class="instalacion-badge">
+                                    <i class="fas fa-apple-alt"></i>
+                                    <span>Nutrición</span>
+                                </div>
+                                <h2>Comedor Escolar</h2>
+                                <p class="instalacion-descripcion">
+                                    Servicio de alimentación balanceada y nutritiva para nuestros estudiantes. 
+                                    Menús variados supervisados por nutricionistas profesionales.
+                                </p>
+                                <div class="instalacion-detalles">
+                                    <div class="detalle-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Capacidad: 200 estudiantes</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Horario: 11:30 AM - 2:00 PM</span>
+                                    </div>
+                                    <div class="detalle-item">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dirigido a: Todos los estudiantes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carrusel-btn next-btn" id="instalacionNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Indicadores del Carrusel -->
+            <div class="carrusel-indicadores" id="instalacionIndicadores"></div>
+            
+            <!-- Miniaturas -->
+            <div class="instalaciones-miniaturas">
+                <div class="miniatura-item active" data-instalacion="informatica">
+                    <i class="fas fa-laptop"></i>
+                    <span>Informática</span>
+                </div>
+                <div class="miniatura-item" data-instalacion="salud">
+                    <i class="fas fa-flask"></i>
+                    <span>Ciencias</span>
+                </div>
+                <div class="miniatura-item" data-instalacion="biblioteca">
+                    <i class="fas fa-book-open"></i>
+                    <span>Biblioteca</span>
+                </div>
+                <div class="miniatura-item" data-instalacion="deportes">
+                    <i class="fas fa-running"></i>
+                    <span>Deportes</span>
+                </div>
+                <div class="miniatura-item" data-instalacion="auditorio">
+                    <i class="fas fa-theater-masks"></i>
+                    <span>Auditorio</span>
+                </div>
+                <div class="miniatura-item" data-instalacion="comedor">
+                    <i class="fas fa-utensils"></i>
+                    <span>Comedor</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ESCUELA NACIONAL DE COMERCIO 1</h3>
+                    <p>Más de 100 años de trayectoria educativa formando líderes del mañana.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#academico">Académico</a></li>
+                        <li><a href="instalaciones.html">Instalaciones</a></li>
+                        <li><a href="index.html#noticias">Noticias</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Nuestra Señora de la Asuncion y Lomas Valetinas 249</p>
+                    <p><i class="fas fa-phone"></i> (595+) 971 759 998</p>
+                    <p><i class="fas fa-envelope"></i> secretariaeenc1@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESCUELA NACIONAL DE COMERCIO 1. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

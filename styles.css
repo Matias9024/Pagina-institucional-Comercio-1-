@@ -2704,6 +2704,277 @@ html {
     }
 }
 
+/* Estilos para página de instalaciones */
+.instalaciones-section {
+    padding: 120px 0 80px;
+    background: #f8f9fa;
+}
+
+.instalaciones-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.instalaciones-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.instalaciones-header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+.instalaciones-carrusel {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.carrusel-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.instalaciones-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.instalacion-slide {
+    min-width: 100%;
+    display: flex;
+    background: white;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.instalacion-slide.active {
+    opacity: 1;
+}
+
+.instalacion-imagen {
+    flex: 1;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.instalacion-imagen i {
+    font-size: 8rem;
+    color: white;
+    opacity: 0.9;
+}
+
+.instalacion-contenido {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.instalacion-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    width: fit-content;
+}
+
+.instalacion-contenido h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.instalacion-descripcion {
+    font-size: 1.1rem;
+    color: #34495e;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.instalacion-detalles {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detalle-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+}
+
+.detalle-item i {
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+.detalle-item span {
+    color: #34495e;
+    font-weight: 500;
+}
+
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carrusel-btn:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carrusel-btn i {
+    font-size: 1.2rem;
+}
+
+.prev-btn {
+    left: -25px;
+}
+
+.next-btn {
+    right: -25px;
+}
+
+.carrusel-indicadores {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.indicador {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #bdc3c7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicador.active {
+    background: #3498db;
+    transform: scale(1.2);
+}
+
+.instalaciones-miniaturas {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.miniatura-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.miniatura-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.miniatura-item.active {
+    border-color: #3498db;
+    background: #f8f9fa;
+}
+
+.miniatura-item i {
+    font-size: 1.5rem;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+}
+
+.miniatura-item span {
+    font-size: 0.9rem;
+    color: #34495e;
+    font-weight: 500;
+}
+
+/* Responsive Design para instalaciones */
+@media (max-width: 768px) {
+    .instalacion-slide {
+        flex-direction: column;
+    }
+    
+    .instalacion-imagen {
+        min-height: 200px;
+    }
+    
+    .instalacion-imagen i {
+        font-size: 4rem;
+    }
+    
+    .instalacion-contenido {
+        padding: 2rem;
+    }
+    
+    .instalacion-contenido h2 {
+        font-size: 1.5rem;
+    }
+    
+    .instalacion-descripcion {
+        font-size: 1rem;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+    
+    .instalaciones-miniaturas {
+        gap: 1rem;
+    }
+    
+    .miniatura-item {
+        padding: 0.8rem 1rem;
+    }
+}
+
 .noticia-categoria {
     display: inline-block;
     background: #3498db;

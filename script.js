@@ -629,6 +629,103 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar navegación de materias
     setupMateriasNavigation();
+    
+    // Carrusel de instalaciones
+    function setupInstalacionesCarousel() {
+        const slider = document.getElementById('instalacionesSlider');
+        const prevBtn = document.getElementById('instalacionPrev');
+        const nextBtn = document.getElementById('instalacionNext');
+        const indicadoresContainer = document.getElementById('instalacionIndicadores');
+        const miniaturas = document.querySelectorAll('.miniatura-item');
+        const slides = document.querySelectorAll('.instalacion-slide');
+        
+        if (!slider || !prevBtn || !nextBtn) return;
+        
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        
+        // Crear indicadores
+        slides.forEach((_, index) => {
+            const indicador = document.createElement('div');
+            indicador.classList.add('indicador');
+            if (index === 0) indicador.classList.add('active');
+            indicador.addEventListener('click', () => goToSlide(index));
+            indicadoresContainer.appendChild(indicador);
+        });
+        
+        const indicadores = document.querySelectorAll('.indicador');
+        
+        function updateCarousel() {
+            // Actualizar slides
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                }
+            });
+            
+            // Actualizar indicadores
+            indicadores.forEach((indicador, index) => {
+                indicador.classList.remove('active');
+                if (index === currentIndex) {
+                    indicador.classList.add('active');
+                }
+            });
+            
+            // Actualizar miniaturas
+            miniaturas.forEach((miniatura, index) => {
+                miniatura.classList.remove('active');
+                if (index === currentIndex) {
+                    miniatura.classList.add('active');
+                }
+            });
+        }
+        
+        function goToSlide(index) {
+            currentIndex = index;
+            if (currentIndex < 0) currentIndex = totalSlides - 1;
+            if (currentIndex >= totalSlides) currentIndex = 0;
+            updateCarousel();
+        }
+        
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+        
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+        
+        // Event listeners para botones
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // Event listeners para miniaturas
+        miniaturas.forEach((miniatura, index) => {
+            miniatura.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Auto-play del carrusel
+        let autoPlayInterval = setInterval(nextSlide, 5000);
+        
+        // Pausar auto-play al hover
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(autoPlayInterval);
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+    }
+    
+    // Inicializar carrusel de instalaciones
+    setupInstalacionesCarousel();
 
     // Header scroll effect
     const header = document.querySelector('.header');
